@@ -1,0 +1,29 @@
+.todoItem {
+  margin-bottom: 16px;
+  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+  background: #07d1bf;
+  border-radius: 5px;
+}
+
+.todoItemCreatedAt {
+  color: #08544e;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+.todoItemCreatedAt.completed {
+  color: #538fc3;
+  text-decoration-line: none;
+}
+
+.complete {
+  background: #004682;
+}
+
+.todoItem .todoContent {
+  color: #ffffff;
+}
+
+.completed {
+  text-decoration-line: line-through;
+}
