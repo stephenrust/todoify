@@ -1,5 +1,5 @@
 import React from "react";
-
+import classNames from "classnames";
 import "./style.css";
 
 const TodoForm = ({
@@ -8,6 +8,10 @@ const TodoForm = ({
   handleTodoSubmit,
   todoFormError
 }) => {
+  let todoFormErrorStyle = classNames({
+    "ui segment errorSegment": true,
+    hasError: todoFormError
+  });
   return (
     <div className="ui segment todoForm">
       <form className="ui form" onSubmit={handleTodoSubmit}>
@@ -19,15 +23,13 @@ const TodoForm = ({
             onChange={handleTodoInput}
           />
         </div>
+        <div className={todoFormErrorStyle}>{todoFormError}</div>
         <button
           className="ui button fluid submitTodoButton"
           onClick={handleTodoSubmit}
         >
           Add Todo
         </button>
-        <div className="ui segment">
-          <p>{todoFormError}</p>
-        </div>
       </form>
     </div>
   );

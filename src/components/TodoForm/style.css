@@ -17,3 +17,12 @@ button.ui.button.submitTodoButton {
   background-color: #ffffff;
   color: #037aba;
 }
+
+.errorSegment {
+  display: none;
+  color: #9f3a38;
+}
+
+.hasError {
+  display: block;
+}

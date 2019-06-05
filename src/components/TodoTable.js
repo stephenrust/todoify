@@ -15,6 +15,12 @@ class TodoTable extends Component {
   };
 
   handleTodoInput = event => {
+    // Check that current input value is more than 3 characters. If so, set todoFormError to ''
+    if (this.state.todoFormValue.length >= 3) {
+      this.setState({
+        todoFormError: ""
+      });
+    }
     this.setState({
       todoFormValue: event.target.value
     });
@@ -23,10 +29,13 @@ class TodoTable extends Component {
   handleTodoSubmit = event => {
     event.preventDefault();
 
-    if (this.state.todoFormValue === "") {
+    if (
+      this.state.todoFormValue === "" ||
+      this.state.todoFormValue.length < 3
+    ) {
       console.log("empty");
       this.setState({
-        todoFormError: "Todo cannot be empty. Please enter a todo."
+        todoFormError: "Please enter a Todo with more than 3 characters"
       });
     } else {
       // Get timestamp for when the todo was created
@@ -94,6 +103,7 @@ class TodoTable extends Component {
               todoFormValue={this.state.todoFormValue}
               handleTodoInput={this.handleTodoInput}
               handleTodoSubmit={this.handleTodoSubmit}
+              todoFormError={this.state.todoFormError}
             />
           </div>
         </div>
@@ -103,7 +113,6 @@ class TodoTable extends Component {
               todos={this.state.todos}
               handleRemoveTodo={this.handleRemoveTodo}
               handleCompleteTodo={this.handleCompleteTodo}
-              todoFormError={this.state.todoFormError}
             />
           </div>
         </div>
