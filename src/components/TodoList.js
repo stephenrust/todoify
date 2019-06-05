@@ -15,17 +15,20 @@ const TodoList = props => {
   // Map over todos
   return (
     <div className="ui container grid">
-      {props.todos.map(({ id, todoContent, isComplete, createdAt }) => (
-        <TodoItem
-          key={id}
-          id={id}
-          todoItemContent={todoContent}
-          isComplete={isComplete}
-          createdAt={createdAt}
-          handleRemoveTodo={props.handleRemoveTodo}
-          handleCompleteTodo={props.handleCompleteTodo}
-        />
-      ))}
+      {props.todos.map(
+        ({ id, todoContent, isComplete, createdAt, completedAt }) => (
+          <TodoItem
+            key={id}
+            id={id}
+            todoItemContent={todoContent}
+            isComplete={isComplete}
+            createdAt={createdAt}
+            completedAt={completedAt}
+            handleRemoveTodo={props.handleRemoveTodo}
+            handleCompleteTodo={props.handleCompleteTodo}
+          />
+        )
+      )}
     </div>
   );
 };

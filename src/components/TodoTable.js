@@ -40,27 +40,34 @@ class TodoTable extends Component {
     } else {
       // Get timestamp for when the todo was created
       const currentTimestamp = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+
       // Create new Todo object
       const newTodo = {
         todoContent: this.state.todoFormValue,
         id: this.state.todos.length + 1,
         isComplete: false,
-        createdAt: currentTimestamp
+        createdAt: currentTimestamp,
+        completedAt: ""
       };
 
-      // Use spread operator to copy the current state and update the todos array
-      this.setState({
-        todos: [newTodo, ...this.state.todos],
-        // Clear form value after submitting
-        todoFormValue: ""
-      });
-      // Execute toast notification upon successful state update
-      toast("Todo added!", {
-        type: "success",
-        hideProgressBar: true,
-        closeOnClick: true,
-        autoClose: 2000
-      });
+      // Use spread operator to copy the current state and update the todos array with the newTodo object
+      this.setState(
+        {
+          todos: [newTodo, ...this.state.todos],
+          // Clear form value after submitting
+          todoFormValue: "",
+          totalTodos: this.state.todos.length
+        },
+        () => {
+          // Execute toast notification upon successful state update
+          toast("Todo added!", {
+            type: "success",
+            hideProgressBar: true,
+            closeOnClick: true,
+            autoClose: 2000
+          });
+        }
+      );
     }
   };
 
@@ -80,6 +87,9 @@ class TodoTable extends Component {
 
   handleCompleteTodo = (event, id) => {
     event.preventDefault();
+    // Get current timestamp
+    const currentTimestamp = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+
     // Get copy of current state
     let todosArray = [...this.state.todos];
 
@@ -89,10 +99,20 @@ class TodoTable extends Component {
     // Set the value of the isComplete property of the selected todo to the opposite of its current value in state.
     todosArray[todoIndex].isComplete = !this.state.todos[todoIndex].isComplete;
 
-    // Update the state with the new todosArray
-    this.setState({
-      todos: todosArray
-    });
+    // Check if currently selected todo has a completedAt value
+    if (todosArray[todoIndex].completedAt !== "") {
+      // Set the completedAt property of the selected todo
+      todosArray[todoIndex].completedAt = "";
+      this.setState({
+        todos: todosArray
+      });
+    } else {
+      todosArray[todoIndex].completedAt = currentTimestamp;
+      // Update the state with the new todosArray
+      this.setState({
+        todos: todosArray
+      });
+    }
   };
 
   render() {

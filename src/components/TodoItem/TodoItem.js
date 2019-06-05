@@ -6,8 +6,7 @@ import "./style.css";
 
 const TodoItem = props => {
   let todoItemStyle = classNames({
-    todoItem: true,
-    row: true,
+    "todoItem row": true,
     complete: props.isComplete
   });
 
@@ -26,6 +25,15 @@ const TodoItem = props => {
     "todoItemCreatedAt completed": props.isComplete
   });
 
+  function renderCompletedAt() {
+    if (props.completedAt !== "") {
+      return (
+        <p className="todoItemCompletedAt">Completed at: {props.completedAt}</p>
+      );
+    }
+    return null;
+  }
+
   return (
     <div className={todoItemStyle}>
       <div className="eleven wide column">
@@ -34,6 +42,7 @@ const TodoItem = props => {
           <p className={todoItemCreatedAtStyle}>
             Created at: {props.createdAt}
           </p>
+          {renderCompletedAt()}
         </div>
       </div>
       <div className="five wide column right aligned">

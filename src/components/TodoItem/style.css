@@ -11,6 +11,12 @@
   font-style: italic;
 }
 
+.todoItemCompletedAt {
+  color: #6fb6f3;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
 .todoItemCreatedAt.completed {
   color: #538fc3;
   text-decoration-line: none;
