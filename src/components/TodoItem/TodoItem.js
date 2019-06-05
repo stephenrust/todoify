@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
 
 import "./style.css";
@@ -27,7 +28,7 @@ const TodoItem = props => {
 
   return (
     <div className={todoItemStyle}>
-      <div className="twelve wide column">
+      <div className="eleven wide column">
         <div className="todoContent">
           <p className={todoItemTextStyle}>{props.todoItemContent}</p>
           <p className={todoItemCreatedAtStyle}>
@@ -35,7 +36,7 @@ const TodoItem = props => {
           </p>
         </div>
       </div>
-      <div className="four wide column right aligned">
+      <div className="five wide column right aligned">
         <div className="todoActions">
           <div className="right floated content">
             <button
@@ -59,6 +60,14 @@ const TodoItem = props => {
       </div>
     </div>
   );
+};
+
+TodoItem.propTypes = {
+  isComplete: PropTypes.bool.isRequired,
+  todoItemContent: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  handleCompleteTodo: PropTypes.func.isRequired,
+  handleRemoveTodo: PropTypes.func.isRequired
 };
 
 export default TodoItem;

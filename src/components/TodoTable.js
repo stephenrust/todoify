@@ -28,12 +28,12 @@ class TodoTable extends Component {
 
   handleTodoSubmit = event => {
     event.preventDefault();
-
+    // Check if todoFormValue is empty or less than 3 characters
     if (
       this.state.todoFormValue === "" ||
       this.state.todoFormValue.length < 3
     ) {
-      console.log("empty");
+      // If it is, setState of todoFormError to display in TodoForm component
       this.setState({
         todoFormError: "Please enter a Todo with more than 3 characters"
       });
@@ -48,12 +48,13 @@ class TodoTable extends Component {
         createdAt: currentTimestamp
       };
 
-      // Use spread operator to update the todos in state
+      // Use spread operator to copy the current state and update the todos array
       this.setState({
         todos: [newTodo, ...this.state.todos],
         // Clear form value after submitting
         todoFormValue: ""
       });
+      // Execute toast notification upon successful state update
       toast("Todo added!", {
         type: "success",
         hideProgressBar: true,

@@ -1,5 +1,7 @@
 import React from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
+
 import "./style.css";
 
 const TodoForm = ({
@@ -33,6 +35,13 @@ const TodoForm = ({
       </form>
     </div>
   );
+};
+
+TodoForm.propTypes = {
+  todoFormValue: PropTypes.string,
+  todoFormError: PropTypes.string,
+  handleTodoInput: PropTypes.func.isRequired,
+  handleTodoSubmit: PropTypes.func.isRequired
 };
 
 export default TodoForm;
