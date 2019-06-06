@@ -1,3 +1,5 @@
 Add priority to todo input form
-Add 'completed at' to each todo -> complete
-Add count of completed, count of open metrics
+///Add 'completed at' to each todo
+///Add mobile styling + responsive buttons
+///Add count of completed, count of open metrics
+Add localstorage for todos

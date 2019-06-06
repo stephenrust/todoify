@@ -51,7 +51,7 @@ const TodoItem = props => {
         <div className="todoContent">
           <p className={todoItemTextStyle}>{props.todoItemContent}</p>
           <p className={todoItemCreatedAtStyle}>
-            Created at: {props.createdAt}
+            Created on: {props.createdAt}
           </p>
           {renderCompletedAt()}
         </div>

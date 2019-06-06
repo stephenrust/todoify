@@ -6,6 +6,7 @@ import moment from "moment";
 
 import TodoForm from "../TodoForm/TodoForm";
 import TodoList from "../TodoList/TodoList";
+import TodoStats from "../TodoStats/TodoStats";
 
 import "./TodoTable.css";
 
@@ -119,20 +120,32 @@ class TodoTable extends Component {
   render() {
     let currentTodoCount = this.state.todos.length;
     let todoListAreaContent;
+    let windowSize = window.innerWidth;
 
     if (currentTodoCount !== 0) {
       todoListAreaContent = (
-        <TodoList
-          todos={this.state.todos}
-          handleRemoveTodo={this.handleRemoveTodo}
-          handleCompleteTodo={this.handleCompleteTodo}
-        />
+        <div className="row">
+          <div className="six wide column">
+            <TodoStats todos={this.state.todos} />
+          </div>
+          <div className="ten wide column">
+            <TodoList
+              todos={this.state.todos}
+              handleRemoveTodo={this.handleRemoveTodo}
+              handleCompleteTodo={this.handleCompleteTodo}
+            />
+          </div>
+        </div>
       );
     } else {
       todoListAreaContent = (
-        <p style={{ color: "#fff", textAlign: "center", fontWeight: 100 }}>
-          No todos yet...
-        </p>
+        <div className="row">
+          <div className="column">
+            <p style={{ color: "#fff", textAlign: "center", fontWeight: 100 }}>
+              No todos yet...
+            </p>
+          </div>
+        </div>
       );
     }
 
@@ -153,9 +166,7 @@ class TodoTable extends Component {
             />
           </div>
         </div>
-        <div className="row">
-          <div className="ten wide column">{todoListAreaContent}</div>
-        </div>
+        {todoListAreaContent}
         <ToastContainer />
       </div>
     );
