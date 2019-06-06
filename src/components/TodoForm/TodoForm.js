@@ -25,7 +25,9 @@ const TodoForm = ({
             onChange={handleTodoInput}
           />
         </div>
-        <div className={todoFormErrorStyle}>{todoFormError}</div>
+        <div className={todoFormErrorStyle}>
+          <i className="icon exclamation circle" /> {todoFormError}
+        </div>
         <button
           className="ui button fluid submitTodoButton"
           onClick={handleTodoSubmit}

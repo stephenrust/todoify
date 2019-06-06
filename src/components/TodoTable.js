@@ -55,8 +55,7 @@ class TodoTable extends Component {
         {
           todos: [...this.state.todos, newTodo],
           // Clear form value after submitting
-          todoFormValue: "",
-          totalTodos: this.state.todos.length
+          todoFormValue: ""
         },
         () => {
           // Execute toast notification upon successful state update
@@ -116,6 +115,25 @@ class TodoTable extends Component {
   };
 
   render() {
+    let currentTodoCount = this.state.todos.length;
+    let todoListAreaContent;
+
+    if (currentTodoCount !== 0) {
+      todoListAreaContent = (
+        <TodoList
+          todos={this.state.todos}
+          handleRemoveTodo={this.handleRemoveTodo}
+          handleCompleteTodo={this.handleCompleteTodo}
+        />
+      );
+    } else {
+      todoListAreaContent = (
+        <p style={{ color: "#fff", textAlign: "center", fontWeight: 100 }}>
+          No todos yet...
+        </p>
+      );
+    }
+
     return (
       <div className="ui grid container centered stackable">
         <div className="row">
@@ -130,11 +148,12 @@ class TodoTable extends Component {
         </div>
         <div className="row">
           <div className="eight wide column">
-            <TodoList
+            {/* <TodoList
               todos={this.state.todos}
               handleRemoveTodo={this.handleRemoveTodo}
               handleCompleteTodo={this.handleCompleteTodo}
-            />
+            /> */}
+            {todoListAreaContent}
           </div>
         </div>
         <ToastContainer />
