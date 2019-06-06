@@ -23,13 +23,31 @@
 }
 
 .complete {
-  background: #004682;
+  background: #082640;
 }
 
 .todoItem .todoContent {
-  color: #ffffff;
+  color: #00403a;
 }
 
 .completed {
   text-decoration-line: line-through;
+  color: #ffffff;
+}
+
+.todoItem.row .mobileButtonColumn button {
+  margin-top: 20px;
+  background: transparent;
+  border: solid 1px #00a99a;
+  color: #08544e;
+}
+
+.mobileButtonLight {
+  background: transparent;
+  border: solid 1px #ffffff !important;
+  color: #ffffff !important;
+}
+
+.todoItem.row .mobileButtonColumn button i {
+  background-color: rgba(0, 0, 0, 0.15);
 }

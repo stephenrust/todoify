@@ -4,8 +4,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 
-import TodoForm from "./TodoForm/TodoForm";
-import TodoList from "./TodoList/TodoList";
+import TodoForm from "../TodoForm/TodoForm";
+import TodoList from "../TodoList/TodoList";
+
+import "./TodoTable.css";
 
 class TodoTable extends Component {
   state = {
@@ -135,9 +137,14 @@ class TodoTable extends Component {
     }
 
     return (
-      <div className="ui grid container centered stackable">
+      <div className="ui grid container stackable">
+        <div className="appHeadline">
+          <h2>Todoify</h2>
+          <p>Get stuff done. Get on with your life.</p>
+        </div>
+
         <div className="row">
-          <div className="eight wide column">
+          <div className="column">
             <TodoForm
               todoFormValue={this.state.todoFormValue}
               handleTodoInput={this.handleTodoInput}
@@ -147,14 +154,7 @@ class TodoTable extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="eight wide column">
-            {/* <TodoList
-              todos={this.state.todos}
-              handleRemoveTodo={this.handleRemoveTodo}
-              handleCompleteTodo={this.handleCompleteTodo}
-            /> */}
-            {todoListAreaContent}
-          </div>
+          <div className="ten wide column">{todoListAreaContent}</div>
         </div>
         <ToastContainer />
       </div>

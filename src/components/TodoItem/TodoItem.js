@@ -16,13 +16,24 @@ const TodoItem = props => {
   });
 
   let todoItemCompleteIcon = classNames({
-    "check circle icon inverted outline fitted": !props.isComplete,
-    "undo alternate circle icon inverted fitted": props.isComplete
+    "check circle icon inverted outline fitted large": !props.isComplete,
+    "undo alternate circle icon inverted fitted large": props.isComplete
   });
 
   let todoItemCreatedAtStyle = classNames({
     todoItemCreatedAt: true,
     "todoItemCreatedAt completed": props.isComplete
+  });
+
+  let mobileButtonStyle = classNames({
+    "ui labeled icon button fluid": true,
+    mobileButtonLight: props.isComplete
+  });
+
+  let mobileButtonCompleteIcon = classNames({
+    icon: true,
+    check: !props.isComplete,
+    undo: props.isComplete
   });
 
   function renderCompletedAt() {
@@ -36,7 +47,7 @@ const TodoItem = props => {
 
   return (
     <div className={todoItemStyle}>
-      <div className="eleven wide column">
+      <div className="twelve wide column">
         <div className="todoContent">
           <p className={todoItemTextStyle}>{props.todoItemContent}</p>
           <p className={todoItemCreatedAtStyle}>
@@ -45,7 +56,7 @@ const TodoItem = props => {
           {renderCompletedAt()}
         </div>
       </div>
-      <div className="five wide column right aligned">
+      <div className="four wide column right aligned large screen computer tablet only">
         <div className="todoActions">
           <div className="right floated content">
             <button>
@@ -58,7 +69,7 @@ const TodoItem = props => {
             </button>
             <button>
               <i
-                className="times circle icon inverted outline fitted"
+                className="times circle icon inverted outline fitted large"
                 alt="Remove Todo"
                 style={{ cursor: "pointer" }}
                 onClick={event => props.handleRemoveTodo(event, props.id)}
@@ -66,6 +77,24 @@ const TodoItem = props => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="eight wide column center aligned mobile only mobileButtonColumn">
+        <button
+          onClick={event => props.handleCompleteTodo(event, props.id)}
+          className={mobileButtonStyle}
+        >
+          <i className={mobileButtonCompleteIcon} />
+          {props.isComplete ? "Undo" : "Complete"}
+        </button>
+      </div>
+      <div className="eight wide column center aligned mobile only mobileButtonColumn">
+        <button
+          onClick={event => props.handleRemoveTodo(event, props.id)}
+          className={mobileButtonStyle}
+        >
+          <i className="times icon" />
+          Remove
+        </button>
       </div>
     </div>
   );

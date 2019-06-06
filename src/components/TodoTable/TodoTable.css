@@ -1,0 +1,15 @@
+.appHeadline {
+  margin-top: 10vh;
+  color: #fff;
+}
+
+.appHeadline h2 {
+  text-align: left;
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.appHeadline p {
+  font-style: italic;
+}
