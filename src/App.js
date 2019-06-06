@@ -2,7 +2,7 @@ import React from "react";
 
 import TodoTable from "./components/TodoTable";
 
-import "./app.css";
+import "./App.css";
 
 const App = () => {
   return (

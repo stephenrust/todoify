@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 
 import TodoForm from "./TodoForm/TodoForm";
-import TodoList from "./TodoList";
+import TodoList from "./TodoList/TodoList";
 
 class TodoTable extends Component {
   state = {
@@ -53,7 +53,7 @@ class TodoTable extends Component {
       // Use spread operator to copy the current state and update the todos array with the newTodo object
       this.setState(
         {
-          todos: [newTodo, ...this.state.todos],
+          todos: [...this.state.todos, newTodo],
           // Clear form value after submitting
           todoFormValue: "",
           totalTodos: this.state.todos.length
