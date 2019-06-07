@@ -23,8 +23,11 @@ class TodoList extends Component {
             isComplete={todo.isComplete}
             createdAt={todo.createdAt}
             completedAt={todo.completedAt}
+            isEditable={todo.isEditable}
             handleCompleteTodo={this.props.handleCompleteTodo}
             handleRemoveTodo={this.props.handleRemoveTodo}
+            handleEditTodo={this.props.handleEditTodo}
+            handleEditTodoInput={this.props.handleEditTodoInput}
           />
         </CSSTransition>
       );

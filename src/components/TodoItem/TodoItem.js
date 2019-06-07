@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
@@ -11,7 +11,7 @@ const TodoItem = props => {
   });
 
   let todoItemTextStyle = classNames({
-    description: true,
+    todoBody: true,
     completed: props.isComplete
   });
 
@@ -45,11 +45,39 @@ const TodoItem = props => {
     return null;
   }
 
+  const isEditable = props.isEditable;
+  let editForm;
+
+  if (isEditable) {
+    editForm = (
+      <div className="ui form todoEditInput">
+        <div className="field">
+          <label>Edit Todo</label>
+          <textarea
+            value=""
+            placeholder={props.todoItemContent}
+            rows="2"
+            onChange={props.handleEditTodoInput}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={todoItemStyle}>
       <div className="twelve wide column">
         <div className="todoContent">
-          <p className={todoItemTextStyle}>{props.todoItemContent}</p>
+          <div className="todoBody">
+            <span
+              className="editTodo"
+              onClick={event => props.handleEditTodo(event, props.id)}
+            >
+              <i className="edit outline icon inverted large left floated" />
+            </span>
+            <span className={todoItemTextStyle}>{props.todoItemContent}</span>
+          </div>
+          {isEditable ? editForm : null}
           <p className={todoItemCreatedAtStyle}>
             Created on: {props.createdAt}
           </p>

@@ -30,6 +30,27 @@
   color: #00403a;
 }
 
+.todoItem .todoContent .todoEditInput {
+  color: #00403a;
+  margin-bottom: 15px;
+  background: transparent;
+}
+
+.todoItem .todoContent .todoEditInput textarea {
+  border: solid 1px #18a094;
+  background: transparent;
+  font-family: inherit;
+  color: #00403a;
+}
+
+.todoItem .todoContent .todoEditInput label {
+  color: #00403a !important;
+}
+
+.todoItem .todoContent .todoBody {
+  margin-bottom: 20px;
+}
+
 .completed {
   text-decoration-line: line-through;
   color: #ffffff;

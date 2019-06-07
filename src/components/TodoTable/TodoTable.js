@@ -51,7 +51,8 @@ class TodoTable extends Component {
         id: this.state.todos.length + 1,
         isComplete: false,
         createdAt: currentTimestamp,
-        completedAt: ""
+        completedAt: "",
+        isEditable: false
       };
 
       // Use spread operator to copy the current state and update the todos array with the newTodo object
@@ -141,6 +142,23 @@ class TodoTable extends Component {
     });
   };
 
+  handleEditTodo = (event, id) => {
+    // Find the todo in the todos array using the id passed in from event handler
+    const currentTodos = [...this.state.todos];
+    const todoIndex = currentTodos.findIndex(todo => todo.id === id);
+
+    currentTodos[todoIndex].isEditable = !this.state.todos[todoIndex]
+      .isEditable;
+
+    this.setState({
+      todos: currentTodos
+    });
+  };
+
+  handleEditTodoInput = event => {
+    console.log("typed!");
+  };
+
   render() {
     let currentTodoCount = this.state.todos.length;
     let todoListAreaContent;
@@ -163,6 +181,8 @@ class TodoTable extends Component {
                 todos={this.state.todos}
                 handleRemoveTodo={this.handleRemoveTodo}
                 handleCompleteTodo={this.handleCompleteTodo}
+                handleEditTodo={this.handleEditTodo}
+                handleEditTodoInput={this.handleEditTodoInput}
               />
             </div>
           </div>
