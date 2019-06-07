@@ -16,7 +16,7 @@ const TodoStats = props => {
   }
 
   return (
-    <div className="ui grid statsGrid">
+    <div className="row">
       <div className="todoStatContainer eight wide column">
         <h3 className="todoStat"> {openTodos} </h3>
         <p className="todoStatLabel">Open {multipleTodos ? "Todos" : "Todo"}</p>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,7 @@ import moment from "moment";
 import TodoForm from "../TodoForm/TodoForm";
 import TodoList from "../TodoList/TodoList";
 import TodoStats from "../TodoStats/TodoStats";
+import GlobalTodoActions from "../GlobalTodoActions/GlobalTodoActions";
 
 import "./TodoTable.css";
 
@@ -117,25 +118,55 @@ class TodoTable extends Component {
     }
   };
 
+  handleRemoveAllTodos = event => {
+    this.setState({
+      todos: []
+    });
+  };
+
+  handleCompleteAllTodos = event => {
+    // Map through current todos and return an array with all todo.isComoplete: true and update the completedAt timestamp.
+    // This solution uses the spread syntax to copy the current todo and spread the isComplete: true and completedAt properties into the new todo
+
+    // Get current timestamp
+    const currentTimestamp = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+    const completedTodos = this.state.todos.map(todo => ({
+      ...todo,
+      isComplete: true,
+      completedAt: currentTimestamp
+    }));
+    this.setState({
+      todos: completedTodos
+    });
+  };
+
   render() {
     let currentTodoCount = this.state.todos.length;
     let todoListAreaContent;
-    let windowSize = window.innerWidth;
 
     if (currentTodoCount !== 0) {
       todoListAreaContent = (
-        <div className="row">
-          <div className="six wide column">
-            <TodoStats todos={this.state.todos} />
+        <Fragment>
+          <div className="row">
+            <div className="six wide column">
+              <div className="ui grid">
+                <GlobalTodoActions
+                  handleRemoveAllTodos={this.handleRemoveAllTodos}
+                  handleCompleteAllTodos={this.handleCompleteAllTodos}
+                />
+                <TodoStats todos={this.state.todos} />
+              </div>
+            </div>
+            <div className="ten wide column">
+              <TodoList
+                todos={this.state.todos}
+                handleRemoveTodo={this.handleRemoveTodo}
+                handleCompleteTodo={this.handleCompleteTodo}
+              />
+            </div>
           </div>
-          <div className="ten wide column">
-            <TodoList
-              todos={this.state.todos}
-              handleRemoveTodo={this.handleRemoveTodo}
-              handleCompleteTodo={this.handleCompleteTodo}
-            />
-          </div>
-        </div>
+        </Fragment>
       );
     } else {
       todoListAreaContent = (

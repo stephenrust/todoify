@@ -37,7 +37,7 @@ const TodoItem = props => {
   });
 
   function renderCompletedAt() {
-    if (props.completedAt !== "") {
+    if (props.isComplete) {
       return (
         <p className="todoItemCompletedAt">Completed at: {props.completedAt}</p>
       );
