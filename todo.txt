@@ -4,4 +4,4 @@ Add priority to todo input form
 ///Add count of completed, count of open metrics
 ///Add complete all and remove all for existing todos
 Add localstorage for todos
-Allow editing of existing todos
+///Allow editing of existing todos
