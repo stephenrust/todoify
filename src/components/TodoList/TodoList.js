@@ -27,7 +27,7 @@ class TodoList extends Component {
             handleCompleteTodo={this.props.handleCompleteTodo}
             handleRemoveTodo={this.props.handleRemoveTodo}
             handleEditTodo={this.props.handleEditTodo}
-            handleEditTodoInput={this.props.handleEditTodoInput}
+            handleUpdateTodo={this.props.handleUpdateTodo}
           />
         </CSSTransition>
       );

@@ -155,8 +155,18 @@ class TodoTable extends Component {
     });
   };
 
-  handleEditTodoInput = event => {
-    console.log("typed!");
+  handleUpdateTodo = (event, newTodoContent, id) => {
+    event.preventDefault();
+
+    const currentTodos = [...this.state.todos];
+    const todoIndex = currentTodos.findIndex(todo => todo.id === id);
+
+    currentTodos[todoIndex].todoContent = newTodoContent;
+    currentTodos[todoIndex].isEditable = false;
+
+    this.setState({
+      todos: currentTodos
+    });
   };
 
   render() {
@@ -182,7 +192,7 @@ class TodoTable extends Component {
                 handleRemoveTodo={this.handleRemoveTodo}
                 handleCompleteTodo={this.handleCompleteTodo}
                 handleEditTodo={this.handleEditTodo}
-                handleEditTodoInput={this.handleEditTodoInput}
+                handleUpdateTodo={this.handleUpdateTodo}
               />
             </div>
           </div>

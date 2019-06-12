@@ -30,25 +30,45 @@
   color: #00403a;
 }
 
+.todoItem .todoContent .editTodo {
+  margin-left: 6px;
+}
+
+.todoItem .todoContent .editTodo i {
+  position: absolute;
+  top: 5px;
+  cursor: pointer;
+}
+
 .todoItem .todoContent .todoEditInput {
   color: #00403a;
   margin-bottom: 15px;
   background: transparent;
 }
 
-.todoItem .todoContent .todoEditInput textarea {
+.todoItem .todoContent .todoEditInput textarea.todoEditInputArea {
   border: solid 1px #18a094;
   background: transparent;
   font-family: inherit;
   color: #00403a;
 }
 
-.todoItem .todoContent .todoEditInput label {
-  color: #00403a !important;
+.todoItem .todoContent .todoEditInput textarea.todoEditInputArea::placeholder {
+  color: #fff;
+}
+
+.todoItem .todoContent .todoEditInput button {
+  color: #082740;
+  background: #8feae2;
+  border: none;
 }
 
 .todoItem .todoContent .todoBody {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.todoActions button i {
+  color: #00403a;
 }
 
 .completed {
