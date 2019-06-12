@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/stephenrust/todoify/static/css/main.c843e7e7.chunk.css",
+    "main.js": "/stephenrust/todoify/static/js/main.73847eab.chunk.js",
+    "main.js.map": "/stephenrust/todoify/static/js/main.73847eab.chunk.js.map",
+    "runtime~main.js": "/stephenrust/todoify/static/js/runtime~main.9c16e4ac.js",
+    "runtime~main.js.map": "/stephenrust/todoify/static/js/runtime~main.9c16e4ac.js.map",
+    "static/css/2.39017165.chunk.css": "/stephenrust/todoify/static/css/2.39017165.chunk.css",
+    "static/js/2.e8472cd5.chunk.js": "/stephenrust/todoify/static/js/2.e8472cd5.chunk.js",
+    "static/js/2.e8472cd5.chunk.js.map": "/stephenrust/todoify/static/js/2.e8472cd5.chunk.js.map",
+    "index.html": "/stephenrust/todoify/index.html",
+    "precache-manifest.4921f884a153a7801149b8e9646ddbe0.js": "/stephenrust/todoify/precache-manifest.4921f884a153a7801149b8e9646ddbe0.js",
+    "service-worker.js": "/stephenrust/todoify/service-worker.js",
+    "static/css/2.39017165.chunk.css.map": "/stephenrust/todoify/static/css/2.39017165.chunk.css.map",
+    "static/css/main.c843e7e7.chunk.css.map": "/stephenrust/todoify/static/css/main.c843e7e7.chunk.css.map"
+  }
+}
