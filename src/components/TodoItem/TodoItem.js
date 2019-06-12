@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
+import TodoItemMobileButton from "./TodoItemMobileButton/TodoItemMobileButton";
+
 import "./style.css";
 
 class TodoItem extends Component {
@@ -38,29 +40,20 @@ class TodoItem extends Component {
     });
 
     let todoItemCompleteIcon = classNames({
-      "check circle icon outline fitted large": !this.props.isComplete,
+      "check circle icon outline fitted large todoActionIconGreen": !this.props
+        .isComplete,
       "undo alternate circle icon inverted fitted large": this.props.isComplete
     });
 
     let todoItemRemoveIcon = classNames({
-      "times circle icon outline fitted large": !this.props.isComplete,
+      "times circle icon outline fitted large todoActionIconGreen": !this.props
+        .isComplete,
       "times circle inverted icon outline fitted large": this.props.isComplete
     });
 
     let todoItemCreatedAtStyle = classNames({
       todoItemCreatedAt: true,
       "todoItemCreatedAt completed": this.props.isComplete
-    });
-
-    let mobileButtonStyle = classNames({
-      "ui labeled icon button fluid": true,
-      mobileButtonLight: this.props.isComplete
-    });
-
-    let mobileButtonCompleteIcon = classNames({
-      icon: true,
-      check: !this.props.isComplete,
-      undo: this.props.isComplete
     });
 
     const isEditable = this.props.isEditable;
@@ -140,7 +133,7 @@ class TodoItem extends Component {
         <div className="four wide column right aligned large screen computer tablet only">
           <div className="todoActions">
             <div className="right floated content">
-              <button>
+              <span className="todoActionButtonWrapper">
                 <i
                   className={todoItemCompleteIcon}
                   alt="Mark Todo Complete"
@@ -149,8 +142,8 @@ class TodoItem extends Component {
                     this.props.handleCompleteTodo(event, this.props.id)
                   }
                 />
-              </button>
-              <button>
+              </span>
+              <span className="todoActionButtonWrapper">
                 <i
                   className={todoItemRemoveIcon}
                   alt="Remove Todo"
@@ -159,30 +152,24 @@ class TodoItem extends Component {
                     this.props.handleRemoveTodo(event, this.props.id)
                   }
                 />
-              </button>
+              </span>
             </div>
           </div>
         </div>
-        <div className="eight wide column center aligned mobile only mobileButtonColumn">
-          <button
-            onClick={event =>
-              this.props.handleCompleteTodo(event, this.props.id)
-            }
-            className={mobileButtonStyle}
-          >
-            <i className={mobileButtonCompleteIcon} />
-            {this.props.isComplete ? "Undo" : "Complete"}
-          </button>
-        </div>
-        <div className="eight wide column center aligned mobile only mobileButtonColumn">
-          <button
-            onClick={event => this.props.handleRemoveTodo(event, this.props.id)}
-            className={mobileButtonStyle}
-          >
-            <i className="times icon" />
-            Remove
-          </button>
-        </div>
+        <TodoItemMobileButton
+          isComplete={this.props.isComplete}
+          handleCompleteTodo={this.props.handleCompleteTodo}
+          id={this.props.id}
+          buttonText={this.props.isComplete ? "Undo" : "Complete"}
+          onClick={event => this.props.handleCompleteTodo(event, this.props.id)}
+        />
+        <TodoItemMobileButton
+          isComplete={this.props.isComplete}
+          handleRemoveTodo={this.props.handleRemoveTodo}
+          id={this.props.id}
+          onClick={event => this.props.handleRemoveTodo(event, this.props.id)}
+          buttonText="Remove"
+        />
       </div>
     );
   }

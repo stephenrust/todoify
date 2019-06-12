@@ -66,28 +66,19 @@
   margin-bottom: 10px;
 }
 
-.todoActions button i {
+.todoActions .todoActionButtonWrapper {
+  margin: 0 8px;
+}
+
+.todoActionIconGreen {
   color: #00403a;
+}
+
+.todoActionIconWhite {
+  color: #ffffff;
 }
 
 .completed {
   text-decoration-line: line-through;
   color: #ffffff;
-}
-
-.todoItem.row .mobileButtonColumn button {
-  margin-top: 20px;
-  background: transparent;
-  border: solid 1px #00a99a;
-  color: #08544e;
-}
-
-.mobileButtonLight {
-  background: transparent;
-  border: solid 1px #ffffff !important;
-  color: #ffffff !important;
-}
-
-.todoItem.row .mobileButtonColumn button i {
-  background-color: rgba(0, 0, 0, 0.15);
 }
