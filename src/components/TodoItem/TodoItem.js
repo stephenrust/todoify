@@ -68,26 +68,28 @@ class TodoItem extends Component {
 
     if (isEditable) {
       editForm = (
-        <form className="ui form todoEditInput">
+        <form
+          className="ui form todoEditInput"
+          onSubmit={event =>
+            this.props.handleUpdateTodo(
+              event,
+              this.state.updateTodoInput,
+              this.props.id
+            )
+          }
+        >
           <div className="field">
             <label
               style={
                 this.props.isComplete ? { color: "#fff" } : { color: "#00403a" }
               }
-            >
-              {/* Edit Todo */}
-            </label>
-            <textarea
+            />
+            <input
+              type="text"
               value={this.state.updateTodoInput}
               placeholder={this.props.todoItemContent}
-              rows="2"
               onChange={this.EditTodoInputChange}
               className="todoEditInputArea"
-              style={
-                this.props.isComplete
-                  ? { color: "#fff", border: " solid 1px #fff" }
-                  : { color: "#00403a", border: " solid 1px #18a094" }
-              }
             />
           </div>
           <button

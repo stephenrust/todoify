@@ -46,9 +46,8 @@
   background: transparent;
 }
 
-.todoItem .todoContent .todoEditInput textarea.todoEditInputArea {
-  border: solid 1px #18a094;
-  background: transparent;
+.todoItem .todoContent .todoEditInput input.todoEditInputArea {
+  border: none;
   font-family: inherit;
   color: #00403a;
 }
