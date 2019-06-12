@@ -147,6 +147,7 @@ class TodoTable extends Component {
     const currentTodos = [...this.state.todos];
     const todoIndex = currentTodos.findIndex(todo => todo.id === id);
 
+    // Toggle the todo's editable state
     currentTodos[todoIndex].isEditable = !this.state.todos[todoIndex]
       .isEditable;
 
@@ -158,10 +159,16 @@ class TodoTable extends Component {
   handleUpdateTodo = (event, newTodoContent, id) => {
     event.preventDefault();
 
+    // Make a copy of the current todos array from state
     const currentTodos = [...this.state.todos];
+
+    // Find the index of the todo that will be updated
     const todoIndex = currentTodos.findIndex(todo => todo.id === id);
 
+    // Update the todo's content with the new content from the form
     currentTodos[todoIndex].todoContent = newTodoContent;
+
+    // Set the updated todo's editable status to false
     currentTodos[todoIndex].isEditable = false;
 
     this.setState({
