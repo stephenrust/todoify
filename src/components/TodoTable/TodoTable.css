@@ -13,3 +13,7 @@
 .appHeadline p {
   font-style: italic;
 }
+
+.toastClass {
+  margin-top: 30px;
+}

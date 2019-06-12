@@ -68,7 +68,8 @@ class TodoTable extends Component {
             type: "success",
             hideProgressBar: true,
             closeOnClick: true,
-            autoClose: 2000
+            autoClose: 2000,
+            className: "toastClass"
           });
         }
       );
