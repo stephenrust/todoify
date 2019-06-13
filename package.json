@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "version": "0.1.0",
-  "homepage": "https://stephenrust.github.io/todoify/",
+  "homepage": "https://probablyabear.github.io/todoify/",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",

@@ -41,29 +41,6 @@ class TodoList extends Component {
   }
 }
 
-// const TodoList = ({ todos, handleRemoveTodo, handleCompleteTodo }) => {
-//   return (
-//     <div className="ui container grid">
-//       <TransitionGroup component={null}>
-//         {todos.map(todo => (
-//           <CSSTransition key={todo.id} timeout={300} classNames="item">
-//             <TodoItem
-//               key={todo.id}
-//               id={todo.id}
-//               todoItemContent={todo.todoContent}
-//               isComplete={todo.isComplete}
-//               createdAt={todo.createdAt}
-//               completedAt={todo.completedAt}
-//               handleRemoveTodo={handleRemoveTodo}
-//               handleCompleteTodo={handleCompleteTodo}
-//             />
-//           </CSSTransition>
-//         ))}
-//       </TransitionGroup>
-//     </div>
-//   );
-// };
-
 TodoList.propTypes = {
   todos: PropTypes.array,
   id: PropTypes.number,

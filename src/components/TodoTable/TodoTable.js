@@ -178,45 +178,7 @@ class TodoTable extends Component {
   };
 
   render() {
-    let currentTodoCount = this.state.todos.length;
-    let todoListAreaContent;
-
-    if (currentTodoCount !== 0) {
-      todoListAreaContent = (
-        <Fragment>
-          <div className="row">
-            <div className="six wide column">
-              <div className="ui grid">
-                <GlobalTodoActions
-                  handleRemoveAllTodos={this.handleRemoveAllTodos}
-                  handleCompleteAllTodos={this.handleCompleteAllTodos}
-                />
-                <TodoStats todos={this.state.todos} />
-              </div>
-            </div>
-            <div className="ten wide column">
-              <TodoList
-                todos={this.state.todos}
-                handleRemoveTodo={this.handleRemoveTodo}
-                handleCompleteTodo={this.handleCompleteTodo}
-                handleEditTodo={this.handleEditTodo}
-                handleUpdateTodo={this.handleUpdateTodo}
-              />
-            </div>
-          </div>
-        </Fragment>
-      );
-    } else {
-      todoListAreaContent = (
-        <div className="row">
-          <div className="column">
-            <p style={{ color: "#fff", textAlign: "center", fontWeight: 100 }}>
-              No todos yet...
-            </p>
-          </div>
-        </div>
-      );
-    }
+    const hasTodos = this.state.todos.length > 0 ? true : false;
 
     return (
       <div className="ui grid container stackable">
@@ -235,7 +197,34 @@ class TodoTable extends Component {
             />
           </div>
         </div>
-        {todoListAreaContent}
+        <Fragment>
+          <div className="row">
+            <div className="six wide column">
+              <div className="ui grid">
+                {hasTodos ? (
+                  <Fragment>
+                    <GlobalTodoActions
+                      handleRemoveAllTodos={this.handleRemoveAllTodos}
+                      handleCompleteAllTodos={this.handleCompleteAllTodos}
+                    />
+                    <TodoStats todos={this.state.todos} />
+                  </Fragment>
+                ) : (
+                  <h2 className="noTodosText">No todos yet...</h2>
+                )}
+              </div>
+            </div>
+            <div className="ten wide column">
+              <TodoList
+                todos={this.state.todos}
+                handleRemoveTodo={this.handleRemoveTodo}
+                handleCompleteTodo={this.handleCompleteTodo}
+                handleEditTodo={this.handleEditTodo}
+                handleUpdateTodo={this.handleUpdateTodo}
+              />
+            </div>
+          </div>
+        </Fragment>
         <ToastContainer />
       </div>
     );
